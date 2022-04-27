@@ -1,0 +1,12 @@
+<div style="display: block">
+  <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [legend]="false"
+          [options]="barChartOptions"
+          [type]="barChartType"
+  >
+  </canvas>
+
+  <button type="button" class="btn btn-danger" (click)="nextMatrix()">Next</button>
+</div>
