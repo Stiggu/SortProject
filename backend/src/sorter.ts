@@ -1,4 +1,5 @@
 import Quicksort from "./Quicksort";
+import Countingsort from "./Countingsort";
 import bubbleSort from "./BubbleSort";
 
 export function bubble(inputs: number[]): number[][] {
@@ -7,6 +8,14 @@ export function bubble(inputs: number[]): number[][] {
 
 export function quick(input: number[]): number[][] {
     Quicksort.sort(input, 0, input.length);
-
+    
+    Quicksort.matrix.shift();
+    
     return Quicksort.matrix;
+}
+
+export function counting(input: number[]): number[][] {
+    Countingsort.sort(input, input.length);
+
+    return Countingsort.matrix;
 }
