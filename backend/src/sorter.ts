@@ -1,3 +1,5 @@
+import Quicksort from "./Quicksort";
+
 export function bubble(inputs: number[]): number[][] {
     const matrix: number[][] = [];
 
@@ -15,4 +17,10 @@ export function bubble(inputs: number[]): number[][] {
         }
     }
     return matrix;
+}
+
+export function quick(input: number[]): number[][] {
+    Quicksort.sort(input, 0, input.length);
+
+    return Quicksort.matrix;
 }
