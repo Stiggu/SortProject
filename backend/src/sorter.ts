@@ -9,7 +9,7 @@ export function bubble(inputs: number[]): number[][] {
                 continue;
             }
             if(inputs[y] > inputs[y + 1]){
-                const fix = inputs[y];
+                const fix:number = inputs[y];
                 inputs[y] = inputs[y + 1];
                 inputs[y + 1] = fix;
             }
