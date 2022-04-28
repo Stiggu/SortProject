@@ -77,7 +77,7 @@ export class ChartComponent implements OnInit {
 
     setTimeout(() => {
       this.playMatrix();
-    }, 500);
+    }, 250);
 
   }
 
