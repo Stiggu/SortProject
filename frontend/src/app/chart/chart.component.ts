@@ -39,7 +39,7 @@ export class ChartComponent implements OnInit {
     {
       data: this.barChartLabels,
       label: 'Bubble sort',
-      backgroundColor: ['#1266f1'],
+      backgroundColor: ['rgba(13,110,253,.5)'],
       borderColor: '#fff'
     },
   ];
@@ -53,13 +53,13 @@ export class ChartComponent implements OnInit {
       let temp: string[] = [];
       for(let x = 0; x < this.matrix[this.matrixidx].length; x++){
         if(this.matrixidx == 0 || this.matrixidx >= this.matrix.length){
-          this.barChartData[0]['backgroundColor'] = ['#1266f1'];
+          this.barChartData[0]['backgroundColor'] = ['rgba(13,110,253,.5)'];
           return;
         }
         if(this.matrix[this.matrixidx][x] !== this.matrix[this.matrixidx-1][x]){
-          temp.push('#fc0000');
+          temp.push('rgba(255,0,23,0.5)');
         } else {
-          temp.push('#1266f1');
+          temp.push('rgba(13,110,253,.5)');
         }
       }
       this.barChartData[0]['backgroundColor'] = temp;
@@ -75,13 +75,13 @@ export class ChartComponent implements OnInit {
       let temp: string[] = [];
       for(let x = 0; x < this.matrix[this.matrixidx].length; x++){
         if(this.matrixidx == 0){
-          this.barChartData[0]['backgroundColor'] = ['#1266f1'];
+          this.barChartData[0]['backgroundColor'] = ['rgba(13,110,253,.5)'];
           return;
         }
         if(this.matrix[this.matrixidx][x] !== this.matrix[this.matrixidx+1][x]){
-          temp.push('#fc0000');
+          temp.push('rgba(255,0,23,0.5)');
         } else {
-          temp.push('#1266f1');
+          temp.push('rgba(13,110,253,.5)');
         }
       }
       this.barChartData[0]['backgroundColor'] = temp;
@@ -93,7 +93,7 @@ export class ChartComponent implements OnInit {
     this.matrix = [[]];
     this.barChartLabels = this.matrix[this.matrixidx];
     this.barChartData[0]['data'] = this.barChartLabels;
-    this.barChartData[0]['backgroundColor'] = ['#1266f1'];
+    this.barChartData[0]['backgroundColor'] = ['rgba(13,110,253,.5)'];
     this.hasData = false;
   }
 
