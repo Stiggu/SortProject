@@ -1,21 +1,8 @@
-<br>
-<section>
-  <form [formGroup]="form" class="form-container">
-    <label for="array">Array:</label>
-    <input type="text" name="array" id="array" formControlName="array">
-    
-    <label for="method">Method:</label>
-    <select name="method" id="method" formControlName="method">
-      <option value="bubble">Bubble sort</option>
-      <option value="counting">Counting sort</option>
-      <option value="quick">Quick sort</option>
-    </select>
+<div class="m-5 text-center">
+  <h1>Sorting Algorithms</h1>
+</div>
 
-    <button (click)="sendData()" [disabled]="!form.valid">Start</button>
-  </form>
-</section>
-
-<div style="display: block">
+<div class="m-5">
   <canvas baseChart
           [datasets]="barChartData"
           [labels]="barChartLabels"
@@ -24,8 +11,54 @@
           [type]="barChartType"
   >
   </canvas>
-
-  <button type="button" class="btn btn-danger" (click)="nextMatrix()">Next</button>
 </div>
 
-<br><br>
+<div class="container-fluid" *ngIf="!hasData; else ready">
+  <form [formGroup]="form">
+    <div class="row justify-content-center">
+
+      <div class="col-sm-4">
+        <label for="array" class="form-label">Array:</label>
+        <input class="form-control" type="text" name="array" id="array" formControlName="array">
+      </div>
+
+      <div class="col-sm-4">
+        <label for="method" class="form-label">Method:</label>
+        <select name="method" id="method" formControlName="method" class="form-control">
+          <option value="bubble">Bubble sort</option>
+          <option value="counting">Counting sort</option>
+          <option value="quick">Quick sort</option>
+        </select>
+      </div>
+
+      <div class="col-sm-3 d-flex align-items-end">
+        <button class="btn btn-primary" (click)="sendData()" [disabled]="!form.valid">Sort</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<ng-template #ready>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-sm-2" *ngIf="!isPlaying; else notPlaying">
+        <button type="button" class="btn btn-primary" [disabled]="matrixidx >= matrix.length" (click)="playMatrix(); this.stopped = false">Play</button>
+      </div>
+      <ng-template #notPlaying>
+        <div class="col-sm-2">
+          <button type="button" class="btn btn-danger" (click)="stopped=true">Stop</button>
+        </div>
+      </ng-template>
+
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-primary" (click)="previousMatrix()" [disabled]="matrixidx <= 0 || isPlaying">Back</button>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-primary" (click)="nextMatrix()" [disabled]="matrixidx >= matrix.length || isPlaying">Next</button>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-danger" (click)="cleanMatrix()" [disabled]="isPlaying">Clean</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
