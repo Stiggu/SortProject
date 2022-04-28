@@ -23,6 +23,9 @@ export class ChartComponent implements OnInit {
 
   public matrix: number[][] = [[]]
   public matrixidx: number = 0;
+  public hasData: boolean = false;
+  public isPlaying: boolean = false;
+  public stopped: boolean = false;
 
   public barChartOptions: any = {
     responsive: true,
@@ -39,12 +42,43 @@ export class ChartComponent implements OnInit {
     },
   ];
 
-  public nextMatrix(): void {
+  public nextMatrix() {
     this.matrixidx++
-    if(this.matrixidx < this.matrix.length){
+    if (this.matrixidx < this.matrix.length) {
       this.barChartLabels = this.matrix[this.matrixidx];
       this.barChartData[0]['data'] = this.barChartLabels;
     }
+  }
+
+  public previousMatrix(): void {
+    this.matrixidx--
+    if (this.matrixidx >= 0) {
+      this.barChartLabels = this.matrix[this.matrixidx];
+      this.barChartData[0]['data'] = this.barChartLabels;
+    }
+  }
+
+  public cleanMatrix(): void {
+    this.matrixidx = 0;
+    this.matrix = [[]];
+    this.barChartLabels = this.matrix[this.matrixidx];
+    this.barChartData[0]['data'] = this.barChartLabels;
+    this.hasData = false;
+  }
+
+  public playMatrix(): void {
+    if (this.matrixidx >= this.matrix.length || this.stopped) {
+      this.isPlaying = false;
+      return;
+    }
+
+    this.isPlaying = true;
+    this.nextMatrix();
+
+    setTimeout(() => {
+      this.playMatrix();
+    }, 500);
+
   }
 
   ngOnInit(): void {
@@ -71,30 +105,32 @@ export class ChartComponent implements OnInit {
     }
   }
 
-  setUpChart(array: number[][]): void{
-    this.matrix = array;
+  setUpChart(array: number[][]): void {
+    this.matrix = [this.form.value.array.split(',').map((si: string) => {
+      return parseInt(si);
+    })]
+
+    this.matrix = this.matrix.concat(array);
     this.matrixidx = 0;
     this.barChartLabels = this.matrix[this.matrixidx];
     this.barChartData[0]['data'] = this.barChartLabels;
+    this.hasData = true;
   }
 
   bubbleSort(array: number[]) {
     this.sortingService.bubble(array).subscribe(response => {
-      console.log(Object.entries(response)[0]);
       this.setUpChart(<number[][]><unknown>response["result"]);
     });
   }
 
   countingSort(array: number[]) {
     this.sortingService.counting(array).subscribe(response => {
-      console.log(response);
       this.setUpChart(<number[][]><unknown>response["result"]);
     });
   }
 
   quickSort(array: number[]) {
     this.sortingService.quick(array).subscribe(response => {
-      console.log(response);
       this.setUpChart(<number[][]><unknown>response["result"]);
     });
   }
