@@ -10,10 +10,11 @@
                 const fix:number = inputs[y];
                 inputs[y] = inputs[y + 1];
                 inputs[y + 1] = fix;
+
+                //guardar par
             }
             matrix.push(inputs.slice());
         }
     }
     return matrix;
 }
-    
