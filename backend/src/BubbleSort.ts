@@ -6,14 +6,14 @@
             if(y == inputs.length - 1){
                 continue;
             }
+            
             if(inputs[y] > inputs[y + 1]){
                 const fix:number = inputs[y];
                 inputs[y] = inputs[y + 1];
                 inputs[y + 1] = fix;
-
-                //guardar par
             }
-            matrix.push(inputs.slice());
+            
+            matrix.push([...inputs]);
         }
     }
     return matrix;

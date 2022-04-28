@@ -26,6 +26,7 @@ export class ChartComponent implements OnInit {
   public hasData: boolean = false;
   public isPlaying: boolean = false;
   public stopped: boolean = false;
+  public playbackSpeed: number = 250;
 
   public barChartOptions: any = {
     responsive: true,
@@ -108,7 +109,7 @@ export class ChartComponent implements OnInit {
 
     setTimeout(() => {
       this.playMatrix();
-    }, 250);
+    }, this.playbackSpeed);
 
   }
 
