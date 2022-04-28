@@ -15,7 +15,9 @@ export function quick(input: number[]): number[][] {
 }
 
 export function counting(input: number[]): number[][] {
-    Countingsort.sort(input, input.length);
+    const countingAlgorithm = new Countingsort();
 
-    return Countingsort.matrix;
+    countingAlgorithm.sort(input, input.length);
+
+    return countingAlgorithm.matrix;
 }

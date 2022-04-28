@@ -1,7 +1,7 @@
 export default class Countingsort {
-    static matrix: number[][] = [];
+    matrix: number[][] = [];
 
-    static sort(array: number[], size: number) {
+    sort(array: number[], size: number) {
         const output: number[] = [];
 
         let max: number = array[0];
@@ -16,6 +16,7 @@ export default class Countingsort {
         
         for(let i = 0; i <= max; ++i) {
             count.push(0);
+            output.push(0);
         }
         
         for(let i = 0; i < size; i++) {
@@ -30,9 +31,9 @@ export default class Countingsort {
             output[count[array[i]] - 1] = array[i];
             count[array[i]]--;
 
-            const copy = [...output, ...array.slice(0,i)];
+            const copy = [...output];
 
-            Countingsort.matrix.push(copy);
+            this.matrix.push(copy);
         }
         
         for(let i = 0; i < size; i++) {

@@ -71,7 +71,7 @@ export class ChartComponent implements OnInit {
 
   bubbleSort(array: number[]) {
     this.sortingService.bubble(array).subscribe(response => {
-      console.log(Object.entries(response)[0][1]);
+      console.log(response);
 
       this.matrix = <number[][]><unknown> response["result"];
     });
