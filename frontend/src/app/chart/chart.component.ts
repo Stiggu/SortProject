@@ -35,10 +35,12 @@ export class ChartComponent implements OnInit {
 
   public barChartLabels: number[] = this.matrix[this.matrixidx];
 
-  public barChartData: { data: any[], label: string }[] = [
+  public barChartData: { data: any[], label: string , backgroundColor: string[], borderColor: string}[] = [
     {
       data: this.barChartLabels,
       label: 'Bubble sort',
+      backgroundColor: ['#1266f1'],
+      borderColor: '#fff'
     },
   ];
 
@@ -47,6 +49,19 @@ export class ChartComponent implements OnInit {
     if (this.matrixidx < this.matrix.length) {
       this.barChartLabels = this.matrix[this.matrixidx];
       this.barChartData[0]['data'] = this.barChartLabels;
+      let temp: string[] = [];
+      for(let x = 0; x < this.matrix[this.matrixidx].length; x++){
+        if(this.matrixidx == 0 || this.matrixidx >= this.matrix.length){
+          this.barChartData[0]['backgroundColor'] = ['#1266f1'];
+          return;
+        }
+        if(this.matrix[this.matrixidx][x] !== this.matrix[this.matrixidx-1][x]){
+          temp.push('#fc0000');
+        } else {
+          temp.push('#1266f1');
+        }
+      }
+      this.barChartData[0]['backgroundColor'] = temp;
     }
   }
 
@@ -63,6 +78,7 @@ export class ChartComponent implements OnInit {
     this.matrix = [[]];
     this.barChartLabels = this.matrix[this.matrixidx];
     this.barChartData[0]['data'] = this.barChartLabels;
+    this.barChartData[0]['backgroundColor'] = ['#1266f1'];
     this.hasData = false;
   }
 
