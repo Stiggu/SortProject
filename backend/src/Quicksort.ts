@@ -1,7 +1,7 @@
 export default class Quicksort {
-    static matrix: number[][] = [];
+    matrix: number[][] = [];
 
-    static partition(array: number[], low: number, high: number): number {
+    partition(array: number[], low: number, high: number): number {
         const pivot = array[high];
 
         let i = low - 1;
@@ -23,19 +23,19 @@ export default class Quicksort {
         return i + 1;
     }
 
-    static sort(array: number[], low: number, high: number) {
+    sort(array: number[], low: number, high: number) {
         const copy = [...array];
 
         if(copy[0] == null) { copy.shift(); }
 
-        Quicksort.matrix.push(copy);
+        this.matrix.push(copy);
 
         if(low < high) {
-            const pi = Quicksort.partition(array, low, high);
+            const pi = this.partition(array, low, high);
 
-            Quicksort.sort(array, low, pi - 1);
+            this.sort(array, low, pi - 1);
 
-            Quicksort.sort(array, pi + 1, high);
+            this.sort(array, pi + 1, high);
         }
     }
 }

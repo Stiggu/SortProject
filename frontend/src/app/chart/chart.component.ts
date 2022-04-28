@@ -80,14 +80,8 @@ export class ChartComponent implements OnInit {
 
   bubbleSort(array: number[]) {
     this.sortingService.bubble(array).subscribe(response => {
-<<<<<<< HEAD
-      console.log(response);
-
-      this.matrix = <number[][]><unknown> response["result"];
-=======
       console.log(Object.entries(response)[0]);
       this.setUpChart(<number[][]><unknown>response["result"]);
->>>>>>> 737665ec9a5e56ed55b2a13cd05591c0036aa506
     });
   }
 

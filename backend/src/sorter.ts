@@ -7,11 +7,13 @@ export function bubble(inputs: number[]): number[][] {
 }
 
 export function quick(input: number[]): number[][] {
-    Quicksort.sort(input, 0, input.length);
+    const quickAlgorithm = new Quicksort();
     
-    Quicksort.matrix.shift();
+    quickAlgorithm.sort(input, 0, input.length);
     
-    return Quicksort.matrix;
+    quickAlgorithm.matrix.shift();
+    
+    return quickAlgorithm.matrix;
 }
 
 export function counting(input: number[]): number[][] {
