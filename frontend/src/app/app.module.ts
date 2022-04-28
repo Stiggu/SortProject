@@ -21,6 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartComponent } from './chart/chart.component';
 import {NgChartsModule} from "ng2-charts";
 
+import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,9 @@ import {NgChartsModule} from "ng2-charts";
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-    NgChartsModule
+    NgChartsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
