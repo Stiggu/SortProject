@@ -35,4 +35,8 @@ export class SortingService {
   quick(array: number[]):Observable<JSONObject> {
     return this.http.post<JSONObject>(SortingService.apiUrl + SortingService.endpoint + 'quick', {array}, SortingService.options);
   }
+
+  merge(array: number[]):Observable<JSONObject> {
+    return this.http.post<JSONObject>(SortingService.apiUrl + SortingService.endpoint + 'merge', {array}, SortingService.options);
+  }
 }

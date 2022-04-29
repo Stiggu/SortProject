@@ -116,7 +116,7 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
+  
   sendData() {
     let array: number[] = this.form.value.array.split(',').map((si: string) => {
       return parseInt(si);
@@ -131,6 +131,9 @@ export class ChartComponent implements OnInit {
         break;
       case 'quick':
         this.quickSort(array);
+        break;
+      case 'merge':
+        this.mergeSort(array);
         break;
       default:
         this.bubbleSort(array);
@@ -163,6 +166,12 @@ export class ChartComponent implements OnInit {
 
   quickSort(array: number[]) {
     this.sortingService.quick(array).subscribe(response => {
+      this.setUpChart(<number[][]><unknown>response["result"]);
+    });
+  }
+
+  mergeSort(array: number[]) {
+    this.sortingService.merge(array).subscribe(response => {
       this.setUpChart(<number[][]><unknown>response["result"]);
     });
   }

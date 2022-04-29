@@ -29,6 +29,7 @@
           <option value="bubble">Bubble sort</option>
           <option value="counting">Counting sort</option>
           <option value="quick">Quick sort</option>
+          <option value="merge">Merge sort</option>
         </select>
       </div>
 
@@ -43,11 +44,11 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-sm-2" *ngIf="!isPlaying; else notPlaying">
-        <button type="button" class="btn btn-primary" [disabled]="matrixidx >= matrix.length" (click)="playMatrix(); this.stopped = false">Play</button>
+        <button type="button" class="btn btn-primary" [disabled]="matrixidx >= matrix.length" (click)=" this.stopped=false;playMatrix();">Play</button>
       </div>
       <ng-template #notPlaying>
         <div class="col-sm-2">
-          <button type="button" class="btn btn-danger" (click)="stopped=true">Stop</button>
+          <button type="button" class="btn btn-danger" (click)="this.stopped=true">Stop</button>
         </div>
       </ng-template>
 
