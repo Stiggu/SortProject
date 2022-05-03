@@ -3,9 +3,15 @@ import Countingsort from "./Countingsort";
 import bubbleSort from "./BubbleSort";
 import MergeSort from "./MergeSort";
 import TimSort from "./TimSort";
+import BogSort from "./BogusSort";
 
 export function bubble(inputs: number[]): number[][] {
     return bubbleSort(inputs);
+}
+
+export function bogo(inputs: number[]): number[][] {
+    const bogoA = new BogSort(inputs);
+    return bogoA.BogoSort();
 }
 
 export function quick(input: number[]): number[][] {

@@ -116,7 +116,7 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  
+
   sendData() {
     let array: number[] = this.form.value.array.split(',').map((si: string) => {
       return parseInt(si);
@@ -125,6 +125,9 @@ export class ChartComponent implements OnInit {
     switch (this.form.value.method) {
       case 'bubble':
         this.bubbleSort(array);
+        break;
+      case 'bogo':
+        this.bogoSort(array);
         break;
       case 'counting':
         this.countingSort(array);
@@ -157,6 +160,12 @@ export class ChartComponent implements OnInit {
 
   bubbleSort(array: number[]) {
     this.sortingService.bubble(array).subscribe(response => {
+      this.setUpChart(<number[][]><unknown>response["result"]);
+    });
+  }
+
+  bogoSort(array: number[]) {
+    this.sortingService.bogo(array).subscribe(response => {
       this.setUpChart(<number[][]><unknown>response["result"]);
     });
   }

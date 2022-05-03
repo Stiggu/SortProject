@@ -1,8 +1,9 @@
 import express from "express";
-import { bubble, quick, counting, merge, tim } from './sorter';
+import {bubble, quick, counting, merge, tim, bogo} from './sorter';
 import { performance } from 'perf_hooks';
 import bodyparser from "body-parser";
 import cors from "cors";
+import BogSort from "./BogusSort";
 
 const app = express();
 const port = 3000;
@@ -25,6 +26,18 @@ app.post('/sort/bubble', (req, res) => {
     totalTime = endTime - startTime;
 
     res.status(200).send({result,totalTime: totalTime+' ms'});
+});
+
+app.post('/sort/bogo', (req, res) => {
+    startTime = performance.now();
+
+    const result: number[][] = bogo(req.body.array);
+
+    endTime = performance.now();
+
+    totalTime = endTime - startTime;
+
+    res.status(200).send({result, totalTime: totalTime+' ms'});
 });
 
 app.post('/sort/quick', (req, res) => {

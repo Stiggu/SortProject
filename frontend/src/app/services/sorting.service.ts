@@ -28,6 +28,10 @@ export class SortingService {
     return this.http.post<JSONObject>(SortingService.apiUrl + SortingService.endpoint + 'bubble', {array}, SortingService.options);
   }
 
+  bogo(array: number[]):Observable<JSONObject> {
+    return this.http.post<JSONObject>(SortingService.apiUrl + SortingService.endpoint + 'bogo', {array}, SortingService.options);
+  }
+
   counting(array: number[]):Observable<JSONObject> {
     return this.http.post<JSONObject>(SortingService.apiUrl + SortingService.endpoint + 'counting', {array}, SortingService.options);
   }
