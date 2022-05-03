@@ -39,4 +39,8 @@ export class SortingService {
   merge(array: number[]):Observable<JSONObject> {
     return this.http.post<JSONObject>(SortingService.apiUrl + SortingService.endpoint + 'merge', {array}, SortingService.options);
   }
+
+  tim(array: number[]):Observable<JSONObject> {
+    return this.http.post<JSONObject>(SortingService.apiUrl + SortingService.endpoint + 'tim', {array}, SortingService.options);
+  }
 }

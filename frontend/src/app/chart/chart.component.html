@@ -1,8 +1,8 @@
-<div class="m-5 text-center">
+<div class="m-4 text-center">
   <h1>Sorting Algorithms</h1>
 </div>
 
-<div class="m-5">
+<div class="m-4 chart-container">
   <canvas baseChart
           [datasets]="barChartData"
           [labels]="barChartLabels"
@@ -14,7 +14,7 @@
   </canvas>
 </div>
 
-<div class="container-fluid" *ngIf="!hasData; else ready">
+<div class="container-fluid array-form" *ngIf="!hasData; else ready">
   <form [formGroup]="form">
     <div class="row justify-content-center">
 
@@ -30,6 +30,7 @@
           <option value="counting">Counting sort</option>
           <option value="quick">Quick sort</option>
           <option value="merge">Merge sort</option>
+          <option value="tim">Tim sort</option>
         </select>
       </div>
 

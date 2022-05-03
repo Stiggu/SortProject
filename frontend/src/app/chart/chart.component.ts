@@ -135,6 +135,9 @@ export class ChartComponent implements OnInit {
       case 'merge':
         this.mergeSort(array);
         break;
+      case 'tim':
+        this.timSort(array);
+        break;
       default:
         this.bubbleSort(array);
     }
@@ -172,6 +175,12 @@ export class ChartComponent implements OnInit {
 
   mergeSort(array: number[]) {
     this.sortingService.merge(array).subscribe(response => {
+      this.setUpChart(<number[][]><unknown>response["result"]);
+    });
+  }
+
+  timSort(array: number[]) {
+    this.sortingService.tim(array).subscribe(response => {
       this.setUpChart(<number[][]><unknown>response["result"]);
     });
   }

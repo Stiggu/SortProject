@@ -2,6 +2,7 @@ import Quicksort from "./Quicksort";
 import Countingsort from "./Countingsort";
 import bubbleSort from "./BubbleSort";
 import MergeSort from "./MergeSort";
+import TimSort from "./TimSort";
 
 export function bubble(inputs: number[]): number[][] {
     return bubbleSort(inputs);
@@ -31,4 +32,12 @@ export function merge(input: number[]): number[][] {
     mergeAlgorithm.sort(input, 0, input.length-1);
 
     return mergeAlgorithm.matrix;
+}
+
+export function tim(input: number[]): number[][] {
+    const timAlgorithm = new TimSort();
+
+    timAlgorithm.sort(input, input.length);
+
+    return timAlgorithm.matrix;
 }

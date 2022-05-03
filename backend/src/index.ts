@@ -1,5 +1,5 @@
 import express from "express";
-import { bubble, quick, counting, merge } from './sorter';
+import { bubble, quick, counting, merge, tim } from './sorter';
 import { performance } from 'perf_hooks';
 import bodyparser from "body-parser";
 import cors from "cors";
@@ -55,6 +55,18 @@ app.post('/sort/merge', (req, res) => {
     startTime = performance.now();
 
     const result: number[][] = merge(req.body.array);
+
+    endTime = performance.now();
+
+    totalTime = endTime - startTime;
+
+    res.status(200).send({result, totalTime: totalTime+' ms'});
+});
+
+app.post('/sort/tim', (req, res) => {
+    startTime = performance.now();
+
+    const result: number[][] = tim(req.body.array);
 
     endTime = performance.now();
 
